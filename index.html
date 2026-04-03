@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crypto Resume — From CT to Corporate</title>
+<meta name="description" content="AI resume builder for crypto professionals. We translate blockchain vocabulary into language HR actually understands. Privacy-first, no accounts.">
+<meta property="og:title" content="Your bags are empty. Your resume doesn't have to be.">
+<meta property="og:description" content="We translate crypto experience into language HR actually understands.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root {
+  --bg: #080b0e;
+  --bg2: #0d1117;
+  --surface: #111620;
+  --surface2: #161d2b;
+  --border: rgba(255,255,255,.06);
+  --border-strong: rgba(255,255,255,.12);
+  --text: #e8edf5;
+  --muted: #6b7a91;
+  --dim: #3d4a5e;
+  --acid: #00ff88;
+  --acid-dim: rgba(0,255,136,.08);
+  --acid-glow: rgba(0,255,136,.2);
+  --amber: #ffc145;
+  --amber-dim: rgba(255,193,69,.08);
+  --red: #ff4d6a;
+  --blue: #4d9fff;
+  --font-display: 'Syne', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+}
+
+html { font-size: 16px; scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-display);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Grid background */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(0,255,136,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,255,136,.025) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Noise overlay */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.4;
+}
+
+.container {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 24px;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── NAV ── */
+nav {
+  padding: 28px 0 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+}
+
+.logo {
+  font-family: var(--font-mono);
+  font-size: .82rem;
+  font-weight: 600;
+  color: var(--acid);
+  letter-spacing: .5px;
+}
+
+.logo span {
+  color: var(--muted);
+}
+
+.nav-badge {
+  font-family: var(--font-mono);
+  font-size: .68rem;
+  font-weight: 500;
+  color: var(--muted);
+  border: 1px solid var(--border-strong);
+  padding: 5px 12px;
+  border-radius: 4px;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+}
+
+/* ── HERO ── */
+.hero {
+  padding: 96px 0 72px;
+  position: relative;
+}
+
+.hero-eyebrow {
+  font-family: var(--font-mono);
+  font-size: .72rem;
+  font-weight: 500;
+  color: var(--acid);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.hero-eyebrow::before {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 1px;
+  background: var(--acid);
+}
+
+.hero h1 {
+  font-size: clamp(2.6rem, 7vw, 4.2rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -2px;
+  margin-bottom: 12px;
+}
+
+.hero h1 .strike {
+  position: relative;
+  color: var(--muted);
+}
+
+.hero h1 .strike::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  height: 2px;
+  background: var(--red);
+  transform: scaleX(0);
+  transform-origin: left;
+  animation: strikethrough 0.6s 0.9s ease forwards;
+}
+
+@keyframes strikethrough {
+  to { transform: scaleX(1); }
+}
+
+.hero h1 .accent {
+  color: var(--acid);
+}
+
+.hero-subtitle {
+  font-family: var(--font-mono);
+  font-size: clamp(.9rem, 2vw, 1.05rem);
+  color: var(--muted);
+  margin: 32px 0 48px;
+  max-width: 520px;
+  line-height: 1.6;
+  border-left: 2px solid var(--border-strong);
+  padding-left: 18px;
+}
+
+.hero-cta-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.cta-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--acid);
+  color: #080b0e;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: .95rem;
+  letter-spacing: -.2px;
+  padding: 15px 32px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all .2s;
+  position: relative;
+}
+
+.cta-primary::after {
+  content: '→';
+  font-size: 1.1rem;
+  transition: transform .2s;
+}
+
+.cta-primary:hover {
+  box-shadow: 0 0 40px var(--acid-glow), 0 4px 20px rgba(0,255,136,.3);
+  transform: translateY(-2px);
+}
+
+.cta-primary:hover::after {
+  transform: translateX(4px);
+}
+
+.cta-hint {
+  font-family: var(--font-mono);
+  font-size: .72rem;
+  color: var(--dim);
+  line-height: 1.5;
+}
+
+/* Quip badge */
+.quip {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: .75rem;
+  color: var(--amber);
+  background: var(--amber-dim);
+  border: 1px solid rgba(255,193,69,.15);
+  padding: 8px 16px;
+  border-radius: 4px;
+  margin-top: 40px;
+  line-height: 1.5;
+}
+
+.quip::before {
+  content: '// ';
+  color: var(--dim);
+}
+
+/* ── PROBLEM ── */
+.section {
+  padding: 72px 0;
+  border-top: 1px solid var(--border);
+}
+
+.section-label {
+  font-family: var(--font-mono);
+  font-size: .68rem;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.section-label .num {
+  color: var(--acid);
+  font-size: .6rem;
+}
+
+.section h2 {
+  font-size: clamp(1.7rem, 4vw, 2.4rem);
+  font-weight: 800;
+  letter-spacing: -1px;
+  line-height: 1.15;
+  margin-bottom: 20px;
+}
+
+.problem-lead {
+  font-family: var(--font-mono);
+  font-size: .92rem;
+  color: var(--muted);
+  max-width: 580px;
+  line-height: 1.7;
+}
+
+.problem-lead strong {
+  color: var(--text);
+}
+
+/* ── TRANSLATION CARDS ── */
+.trans-grid {
+  display: grid;
+  gap: 12px;
+  margin-top: 48px;
+}
+
+.trans-card {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: border-color .2s, box-shadow .2s;
+}
+
+.trans-card:hover {
+  border-color: rgba(0,255,136,.2);
+  box-shadow: 0 0 24px rgba(0,255,136,.05);
+}
+
+.trans-side {
+  padding: 20px 22px;
+}
+
+.trans-before {
+  background: var(--bg2);
+  border-right: 1px solid var(--border);
+}
+
+.trans-after {
+  background: var(--surface2);
+}
+
+.trans-tag {
+  font-family: var(--font-mono);
+  font-size: .6rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.trans-before .trans-tag { color: var(--red); }
+.trans-after .trans-tag { color: var(--acid); }
+
+.trans-text {
+  font-size: .88rem;
+  line-height: 1.45;
+  font-weight: 600;
+}
+
+.trans-before .trans-text {
+  color: var(--muted);
+  text-decoration: line-through;
+  text-decoration-color: rgba(255,77,106,.4);
+  text-decoration-thickness: 1px;
+}
+
+.trans-after .trans-text {
+  color: var(--text);
+}
+
+.trans-arrow-col {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16px;
+  color: var(--dim);
+  font-size: 1rem;
+  background: linear-gradient(90deg, var(--bg2) 0%, var(--surface2) 100%);
+}
+
+/* ── PRIVACY ── */
+.privacy-box {
+  background: var(--surface);
+  border: 1px solid rgba(0,255,136,.15);
+  border-radius: 8px;
+  padding: 36px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 20px 24px;
+  align-items: start;
+  box-shadow: inset 0 0 60px rgba(0,255,136,.03);
+}
+
+.privacy-icon {
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(0,255,136,.2);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  background: var(--acid-dim);
+  flex-shrink: 0;
+}
+
+.privacy-content h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: var(--acid);
+}
+
+.privacy-content p {
+  font-family: var(--font-mono);
+  font-size: .82rem;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.privacy-pills {
+  grid-column: 2;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+.privacy-pill {
+  font-family: var(--font-mono);
+  font-size: .65rem;
+  font-weight: 500;
+  letter-spacing: .5px;
+  color: var(--acid);
+  background: var(--acid-dim);
+  border: 1px solid rgba(0,255,136,.15);
+  padding: 4px 10px;
+  border-radius: 3px;
+  text-transform: uppercase;
+}
+
+/* ── WAITLIST ── */
+.waitlist-section {
+  padding: 80px 0 64px;
+  border-top: 1px solid var(--border);
+}
+
+.waitlist-inner {
+  text-align: center;
+}
+
+.waitlist-inner h2 {
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -1.5px;
+  margin-bottom: 12px;
+}
+
+.waitlist-inner .sub {
+  font-family: var(--font-mono);
+  font-size: .88rem;
+  color: var(--muted);
+  margin-bottom: 40px;
+}
+
+.quip-block {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 40px;
+  align-items: center;
+}
+
+.quip-line {
+  font-family: var(--font-mono);
+  font-size: .78rem;
+  color: var(--muted);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 8px 18px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.quip-line::before {
+  content: '>';
+  color: var(--acid);
+  font-weight: 600;
+}
+
+.waitlist-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--acid);
+  color: #080b0e;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.05rem;
+  letter-spacing: -.3px;
+  padding: 18px 40px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all .2s;
+}
+
+.waitlist-cta:hover {
+  box-shadow: 0 0 50px var(--acid-glow), 0 6px 24px rgba(0,255,136,.35);
+  transform: translateY(-3px);
+}
+
+.waitlist-meta {
+  margin-top: 16px;
+  font-family: var(--font-mono);
+  font-size: .68rem;
+  color: var(--dim);
+}
+
+/* ── FOOTER ── */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 28px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.footer-brand a {
+  font-family: var(--font-mono);
+  font-size: .78rem;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color .2s;
+}
+
+.footer-brand a:hover {
+  color: var(--acid);
+}
+
+.footer-tag {
+  font-family: var(--font-mono);
+  font-size: .65rem;
+  color: var(--dim);
+}
+
+/* ── ANIMATIONS ── */
+.fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity .5s ease, transform .5s ease;
+}
+
+.fade-up.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── MOBILE ── */
+@media (max-width: 640px) {
+  nav { padding: 20px 0; }
+
+  .hero { padding: 60px 0 48px; }
+
+  .trans-card {
+    grid-template-columns: 1fr;
+  }
+
+  .trans-before {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .trans-arrow-col {
+    padding: 10px;
+    background: var(--bg);
+  }
+
+  .privacy-box {
+    grid-template-columns: 1fr;
+  }
+
+  .privacy-pills {
+    grid-column: 1;
+  }
+
+  footer {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-cta-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <nav>
+    <span class="logo">crypto<span>/</span>resume</span>
+    <span class="nav-badge">Early Access</span>
+  </nav>
+</div>
+
+<!-- HERO -->
+<div class="container">
+  <section class="hero">
+    <div class="hero-eyebrow">CT to Corporate</div>
+
+    <h1>
+      Your bags are <span class="strike">empty</span>.<br>
+      Your resume <span class="accent">doesn't have to be.</span>
+    </h1>
+
+    <p class="hero-subtitle">
+      We translate crypto experience into language HR actually understands. No more watching your application disappear into the ATS void.
+    </p>
+
+    <div class="hero-cta-row">
+      <a href="mailto:emmanuelpadilla0@gmail.com?subject=Crypto%20Resume%20Waitlist" class="cta-primary">Join the Waitlist</a>
+      <div class="cta-hint">No accounts. No spam.<br>One email when we launch.</div>
+    </div>
+
+    <div class="quip">You survived three rug pulls. You can handle corporate America.</div>
+  </section>
+</div>
+
+<!-- PROBLEM -->
+<div class="container">
+  <section class="section fade-up">
+    <div class="section-label"><span class="num">[01]</span> The Problem</div>
+    <h2>HR doesn't speak crypto. Your resume is getting ghosted.</h2>
+    <p class="problem-lead">
+      You managed <strong>50K-member communities</strong>, ran <strong>multi-million dollar treasuries</strong>, shipped <strong>token launches</strong> across three platforms. But your resume says "Discord mod" and the ATS fires back an auto-rejection before a human ever sees it. The translation is mechanical — but nobody's doing it.
+    </p>
+  </section>
+</div>
+
+<!-- TRANSLATION EXAMPLES -->
+<div class="container">
+  <section class="section fade-up" style="padding-top:0; border:none;">
+    <div class="section-label"><span class="num">[02]</span> Translation Engine</div>
+    <h2>From CT to corporate. We speak both languages.</h2>
+
+    <div class="trans-grid">
+      <div class="trans-card">
+        <div class="trans-side trans-before">
+          <div class="trans-tag">Your Resume</div>
+          <div class="trans-text">Discord Moderator (50K server)</div>
+        </div>
+        <div class="trans-arrow-col">→</div>
+        <div class="trans-side trans-after">
+          <div class="trans-tag">After Translation</div>
+          <div class="trans-text">Community Operations Manager</div>
+        </div>
+      </div>
+
+      <div class="trans-card">
+        <div class="trans-side trans-before">
+          <div class="trans-tag">Your Resume</div>
+          <div class="trans-text">DAO Treasury Management</div>
+        </div>
+        <div class="trans-arrow-col">→</div>
+        <div class="trans-side trans-after">
+          <div class="trans-tag">After Translation</div>
+          <div class="trans-text">Financial Operations &amp; Budget Management</div>
+        </div>
+      </div>
+
+      <div class="trans-card">
+        <div class="trans-side trans-before">
+          <div class="trans-tag">Your Resume</div>
+          <div class="trans-text">Token Launch &amp; Marketing</div>
+        </div>
+        <div class="trans-arrow-col">→</div>
+        <div class="trans-side trans-after">
+          <div class="trans-tag">After Translation</div>
+          <div class="trans-text">Product Launch &amp; Growth Marketing</div>
+        </div>
+      </div>
+
+      <div class="trans-card">
+        <div class="trans-side trans-before">
+          <div class="trans-tag">Your Resume</div>
+          <div class="trans-text">Smart Contract Auditing</div>
+        </div>
+        <div class="trans-arrow-col">→</div>
+        <div class="trans-side trans-after">
+          <div class="trans-tag">After Translation</div>
+          <div class="trans-text">Technical Quality Assurance &amp; Code Review</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- PRIVACY -->
+<div class="container">
+  <section class="section fade-up">
+    <div class="section-label"><span class="num">[03]</span> Privacy</div>
+    <div class="privacy-box">
+      <div class="privacy-icon">&#128274;</div>
+      <div class="privacy-content">
+        <h3>Your data stays on your machine.</h3>
+        <p>
+          We're crypto native — we get it. All resume processing happens locally in your browser. Nothing leaves your device. No accounts. No uploads. No tracking. Your employment history is nobody's business but yours.
+        </p>
+      </div>
+      <div class="privacy-pills">
+        <span class="privacy-pill">No Accounts</span>
+        <span class="privacy-pill">No Uploads</span>
+        <span class="privacy-pill">No Tracking</span>
+        <span class="privacy-pill">Local-First</span>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- WAITLIST -->
+<div class="container">
+  <section class="waitlist-section fade-up" id="waitlist">
+    <div class="waitlist-inner">
+      <h2>Get early access.</h2>
+      <p class="sub">Be first in line when we ship.</p>
+
+      <div class="quip-block">
+        <div class="quip-line">You managed a 50K Discord. That's called "community operations" now.</div>
+        <div class="quip-line">From CT to corporate. We speak both languages.</div>
+      </div>
+
+      <a href="mailto:emmanuelpadilla0@gmail.com?subject=Crypto%20Resume%20Waitlist" class="waitlist-cta">
+        Join the Waitlist →
+      </a>
+      <div class="waitlist-meta">Opens your mail client. One line email. We'll reach out when we launch.</div>
+    </div>
+  </section>
+</div>
+
+<div class="container">
+  <footer>
+    <div class="footer-brand">
+      Built by <a href="https://rktlabs.dev" target="_blank" rel="noopener">Rocket Labs AI</a>
+    </div>
+    <div class="footer-tag">rktlabs.dev</div>
+  </footer>
+</div>
+
+<script>
+const observer = new IntersectionObserver(
+  (entries) => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+  { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+);
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
